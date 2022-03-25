@@ -1,4 +1,5 @@
-# 1966_README.md
+# [프린터 큐](https://www.acmicpc.net/problem/1966)
+
 
 ## 문제
 
