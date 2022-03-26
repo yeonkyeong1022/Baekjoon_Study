@@ -1,5 +1,6 @@
 result=[]
 stack=[]
+tmp=[]
 ind = -1
 n = int(input())
 for i in range(n):
@@ -8,10 +9,10 @@ for i in range(n):
 for i in range(1, n+1):
     stack.append(i)
     print("+")
-    
-    for j in range(n):
+    l = len(stack)
+    for j in range(len(tmp)+1, l):
         if result[j]==stack[-1]:
-            stack.pop()
+            tmp.append(stack.pop())
             print("-")
         else :
             break

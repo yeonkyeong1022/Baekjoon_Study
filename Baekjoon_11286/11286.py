@@ -1,30 +1,28 @@
 import sys
-def maxHeap(arr, i):
+def minHeap(arr, i):
     left = 2*i
     right = (2*i)+1
     min = i
-    if left<len(arr) and data[i]<data[left]:
+    if left<len(arr) and (abs(data[i])>abs(data[left]) or abs(data[i])==abs(data[left]) and data[i]>data[left]):
         min = left
-    if right<len(arr) and data[i]<data[right]:
+    if right<len(arr) and (abs(data[i])>abs(data[right]) or abs(data[i])==abs(data[right]) and data[i]>data[right]):
         min = right
-        if data[right]<data[left]:
+        if abs(data[right])>abs(data[left]) or abs(data[right])==abs(data[left]) and data[right]>data[left]:
             min = left
     if min != i:
         data[i], data[min] = data[min], data[i]
-        maxHeap(arr, min)
-
-
+        minHeap(arr, min)
 data = [None]
 N = int(input())
 for i in range(N):
     x = int(sys.stdin.readline())
-    if x>0:
+    if x!=0:
         data.append(x)
         l = len(data)-1
         while l>1:
-            if data[l]>data[l//2]: # 부모노드보다 크면
+            if abs(data[l])<abs(data[l//2]) or abs(data[l])==abs(data[l//2]) and data[l]<data[l//2]: 
                 data[l], data[l//2] = data[l//2], data[l] #교환
-                l=l//2 #비교대상 한 칸 위로
+                l=l//2 
             else :
                 break
     elif len(data)==1:
@@ -32,5 +30,5 @@ for i in range(N):
     else :
         data[1], data[-1] = data[-1], data[1]
         print(data.pop())
-        maxHeap(data, 1)
-        
+        minHeap(data, 1)
+    
