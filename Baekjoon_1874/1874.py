@@ -1,29 +1,23 @@
-result=[]
+import sys
 stack=[]
-tmp=[]
-ind = -1
+arr=[]
+s=1
+TF=0
+
 n = int(input())
 for i in range(n):
-    result.append(int(input()))
-    
-for i in range(1, n+1):
-    stack.append(i)
-    print("+")
-    l = len(stack)
-    for j in range(len(tmp)+1, l):
-        if result[j]==stack[-1]:
-            tmp.append(stack.pop())
-            print("-")
-        else :
-            break
-    
-    
-    
-    
-
-
-
-
-
-
-    
+    num = int(sys.stdin.readline())
+    while s<=num:
+        arr.append('+')
+        stack.append(s)
+        s+=1
+    if stack[-1]==num:
+        stack.pop()
+        arr.append('-')
+    else :
+        TF=1
+if TF==1:
+    print("NO")
+else :
+    for i in arr:
+        print(i)
