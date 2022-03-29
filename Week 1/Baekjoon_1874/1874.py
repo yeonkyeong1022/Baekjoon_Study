@@ -21,3 +21,4 @@ if TF==1:
 else :
     for i in arr:
         print(i)
+        
