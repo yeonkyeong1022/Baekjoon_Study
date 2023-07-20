@@ -3,41 +3,38 @@ import heapq
 input = sys.stdin.readline 
 INF = int(1e9)
 
-n = int(input())
+n, m = map(int, input().split())
 graph = [[] for i in range(n+1)]
 distance = [INF]*(n+1)
-G = []
-
-for i in range(n):
-    G.append(list(map(int, input().split())))
-
-for i in range(n):
-    for j in range(n):
-        if G[i][j] == 1:
-            graph[i].append((j, 1))
-        else :
-            graph[i].append((j, INF))
+            
+for i in range(m):
+    a, b = map(int, input().split())
+    graph[a].append((b, 1))
+    
 
 def dijkstra(start):
     q = [] 
-    heapq.heappush(q, (INF, start))
-    distance[start] = INF
+    heapq.heappush(q, (0, start))
+    distance[start] = 0
     while q:
         dist, now = heapq.heappop(q)
         if distance[now]<dist :
             continue 
         for i in graph[now]:
-            cost = 1 
+            cost = dist +i[1]
             if cost < distance[i[0]]:
                 distance[i[0]] = cost 
                 heapq.heappush(q, (cost, i[0]))
 
-for i in range(n):
+min = INF 
+for i in range(1, n+1):
     distance = [INF]*(n+1)
     dijkstra(i)
-    for j in range(n):
-        if distance[j]==INF:
-            print(0, end=' ')
-        else :
-            print(1, end=' ')
-    print()
+    print(distance)
+    sum = 0
+    for j in range(1, n+1):
+        if distance[j] != INF:
+            sum += distance[j]
+    if min>sum:
+        min = sum 
+print(min)
