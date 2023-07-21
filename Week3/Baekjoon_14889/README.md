@@ -97,4 +97,5 @@ print(minDiff)
     1. 반복문을 돌며 i와 j가 둘 다 true라면 start 팀, 둘 다 false라면 link 팀 점수로 계산해준다.
 5. start, link팀원 능력치를 모두 구했다면 차이의 절댓값을 취하고 최소값과 비교해준다.
 
+
 - [참고](https://jungsiroo.github.io/algorithm/2023-04-05-backtrack/)
