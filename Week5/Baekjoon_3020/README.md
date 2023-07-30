@@ -10,7 +10,7 @@
 
 아래 그림은 길이가 14미터이고 높이가 5미터인 동굴이다. (예제 그림)
 
-[image](https://upload.acmicpc.net/c6fd496d-ccf5-4f9d-a06e-32b121fc6a82/-/preview/)
+![Alt text](https://upload.acmicpc.net/c6fd496d-ccf5-4f9d-a06e-32b121fc6a82/-/preview/)
 
 이 개똥벌레는 장애물을 피하지 않는다. 자신이 지나갈 구간을 정한 다음 일직선으로 지나가면서 만나는 모든 장애물을 파괴한다.
 
