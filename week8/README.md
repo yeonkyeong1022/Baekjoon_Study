@@ -1,10 +1,12 @@
+# 이코테 강의 08 : 기타 그래프 이론
+
 # 서로소 집합(Disjoint Sets)
 
 : 공통 원소가 없는 두 집합
 
 - 서로소 관계인지 아닌지 판단하는 경우, 원소를 확인하여 판단한다.
     
-    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/80df67be-21a6-48d5-8f39-051cace89720/Alt text.png)
+    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/80df67be-21a6-48d5-8f39-051cace89720/Untitled.png)
     
     - 원소 1과 2를 가지는 집합과 원소 3, 4를 가지는 집합은 겹치는 원소가 없어 서로소 관계이다.
 
@@ -28,38 +30,38 @@
 - **처리할 연산들** : `Union(1, 4)`, `Union(2, 3)`, `Union(2, 4)`, `Union(5, 6)`
 - **[초기 단계]** 노드의 개수 크기만큼의 부모 테이블을 초기화 한다.
     
-    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a3a45b13-a2eb-40d2-837a-2dbe34ce60b7/Alt text.png)
+    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a3a45b13-a2eb-40d2-837a-2dbe34ce60b7/Untitled.png)
     
     - 처음에는 부모를 모두 자기 자신으로 설정한다.
     - 6개의 집합은 모두 서로 다른 집합으로 구분된다.
 - **[Step 1]** 노드 1과 노드 4의 루트 노드를 각각 찾는다. 현재 루트 노드는 각각 1과 4이므로 더 큰 번호에 해당하는 루트 노드 4의 부모를 1로 설정한다.
     
-    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5833f491-3a0d-430b-8545-25f72b488ba7/Alt text.png)
+    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5833f491-3a0d-430b-8545-25f72b488ba7/Untitled.png)
     
 - ****************[Step 2]**************** 노드 2와 노드 3의 루트 노드를 각각 찾는다. 현재 루트 노드는 각각 2와 3이므로 더 큰 번호에 해당하는 루트 노드 3의 부모를 2로 설정한다.
     
-    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f461cbd9-0202-40e3-bd3b-5468d19ed5fb/Alt text.png)
+    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f461cbd9-0202-40e3-bd3b-5468d19ed5fb/Untitled.png)
     
 - ****************[Step 3]**************** 노드 2와 노드 4의 루트 노드를 각각 찾는다. 현재 루트 노드는 각각 2와 1이므로 더 큰 번호에 해당하는 루트 노드 2의 부모를 1로 설정한다.
     
-    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/44228494-bcde-43a8-b454-0f749de6954d/Alt text.png)
+    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/44228494-bcde-43a8-b454-0f749de6954d/Untitled.png)
     
 - ****************[Step 4]**************** 노드 5와 노드 6의 루트 노드를 각각 찾는다. 현재 루트 노드는 각각 5와 6이므로 더 큰 번호에 해당하는 루트 노드 6의 부모를 5로 설정한다.
     
-    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/51b4619f-3e85-439b-a4ef-cee29f41f123/Alt text.png)
+    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/51b4619f-3e85-439b-a4ef-cee29f41f123/Untitled.png)
     
 
 ### 연결성
 
 - 서로소 집합 자료구조에서는 연결성을 통해 손쉽게 집합의 형태를 확인할 수 있다.
     
-    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/44089b5e-eac3-47be-8e81-57d492b23104/Alt text.png)
+    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/44089b5e-eac3-47be-8e81-57d492b23104/Untitled.png)
     
 - 기본적인 형태의 서로소 집합 자료구조에서는 루트 노드에 즉시 접근할 수 없다.
     - 루트 노드를 찾기 위해 **부모 테이블을 계속해서 확인**하며 재귀적으로 거슬러 올라가야 한다.
 - 다음 예시에서 노드 3의 루트를 찾기 위해서는 노드 2를 거쳐 노드 1에 접근해야 한다.
     
-    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d662b01e-7c6c-4cb6-9677-60414c3a8485/Alt text.png)
+    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d662b01e-7c6c-4cb6-9677-60414c3a8485/Untitled.png)
     
 
 ### 기본적인 구현방법
@@ -114,7 +116,7 @@ for i in range(1, v+1):
     - 다음과 같이 {1, 2, 3, 4, 5}의 총 5개의 원소가 존재하는 상황의 경우
     - 수행된 연산들: `Union(4, 5)`, `Union(3, 4)`, `Union(2, 3)`, `Union(1, 2)`
     
-    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2975c410-c694-4a58-8caa-e4f8fd25cc35/Alt text.png)
+    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2975c410-c694-4a58-8caa-e4f8fd25cc35/Untitled.png)
     
     - 이 때 5번 노드에서 Find 연산을 수행하면 4, 3, 2, 1번 노드를 모두 확인하게 된다.
 
@@ -138,7 +140,7 @@ for i in range(1, v+1):
 - 동일한 예시에서 **모든 합집합(Union) 함수를 처리한 후 각 원소에 대하여 찾기(Find) 함수를 수행하면 다음과 같이 부모 테이블이 갱신**된다.
 - 기본적인 방법에 비하여 시간 복잡도가 개선된다.
 
-![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fbf6514d-c40a-4ae4-a1a5-7fbfa418a728/Alt text.png)
+![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fbf6514d-c40a-4ae4-a1a5-7fbfa418a728/Untitled.png)
 
 ## 서로소 집합을 활용한 사이클 판별
 
@@ -154,22 +156,22 @@ for i in range(1, v+1):
 
 - **[초기 단계]** 모든 노드에 대하여 자기 자신을 부모로 설정하는 형태로 부모 테이블을 초기화 한다.
     
-    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3b02378b-77bd-4735-bd9b-38e5bc1d5292/Alt text.png)
+    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3b02378b-77bd-4735-bd9b-38e5bc1d5292/Untitled.png)
     
 - **[Step 1]** 간선 (1, 2)를 확인한다. 노드 1과 노드 2의 루트 노드는 각각 1과 2이다. 따라서 더 큰 번호에 해당하는 노드 2의 부모노드를 1로 변경한다.
     
-    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5113ce7e-d0dc-491b-82e3-fce3f1025c88/Alt text.png)
+    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5113ce7e-d0dc-491b-82e3-fce3f1025c88/Untitled.png)
     
 - **[Step 2]** 간선 (1, 3)를 확인한다. 노드 1과 노드 3의 루트 노드는 각각 1과 3이다. 따라서 더 큰 번호에 해당하는 노드 3의 부모노드를 1로 변경한다.
     - 현재 각 노드가 모두 같은 집합에 속하는 원소임을 알 수 있다.
     
-    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f7e84b0f-f58b-454c-9bb2-18246b27e06d/Alt text.png)
+    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f7e84b0f-f58b-454c-9bb2-18246b27e06d/Untitled.png)
     
 - **[Step 3]** 간선 (2, 3)을 확인한다. 이미 노드 2와 노드 3의 루트 노드는 모두 1이다. 다시말해 **사이클이 발생**한다는 것을 알 수 있다.
     - 간선 정보를 확인했을 때 같은 집합에 속해있다면, 이 간선으로 인해 현재 그래프에 사이클이 발생했음을 알 수 있다.
     - 간선을 하나씩 확인하며 합치기 연산을 수행하는 것 만으로도 사이클이 발생하는지 확인하는 것이 가능하다.
     
-    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b3dc4a9d-ff0c-42c9-8c95-2c3274567ce6/Alt text.png)
+    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b3dc4a9d-ff0c-42c9-8c95-2c3274567ce6/Untitled.png)
     
 - 사이클 판별 코드
     
@@ -219,7 +221,7 @@ for i in range(1, v+1):
         
         
 
-![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/91a8713b-30ad-41ae-b956-556f3f2afd12/Alt text.png)
+![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/91a8713b-30ad-41ae-b956-556f3f2afd12/Untitled.png)
 
 ## 최소 신장 트리
 
@@ -229,7 +231,7 @@ for i in range(1, v+1):
     - 두 도시 A, B를 선택했을 때 A에서 B로 이동하는 경로가 반드시 존재하도록 도로를 설치한다.
     - **모든 노드가 연결되어 이동 가능하도록 만들되, 최소한의 비용으로 전체 신장트리를 구하고자 하는 것이다.**
     
-    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9cf2b825-da36-4963-9922-c661b4087205/Alt text.png)
+    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9cf2b825-da36-4963-9922-c661b4087205/Untitled.png)
     
     - 1, 3을 연결하는 간선을 제외하게 되면, 모든 노드가 연결되어있으면서 비용이 최소가 되는 신장트리가 만들어진다.
 
@@ -247,11 +249,11 @@ for i in range(1, v+1):
 
 - **************************[초기 단계]************************** 그래프의 모든 간선 정보에 대하여 **오름차순 정렬**을 수행한다.
     
-    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d4020a14-ca34-41c7-92d1-2187e36775cf/Alt text.png)
+    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d4020a14-ca34-41c7-92d1-2187e36775cf/Untitled.png)
     
 - **[최종 결과]** 비용이 작은 것부터 오름차순으로 선택하여 최소 신장트리에 포함시키는데, 이 과정에서 6-7을 잇는 간선과 2-3을 잇는 간선, 1-5를 잇는 간선은 사이클이 발생하여 신장트리에서 제외시킨다.
     
-    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3d17d5ff-b9d5-4445-929b-7a4785be92a1/Alt text.png)
+    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3d17d5ff-b9d5-4445-929b-7a4785be92a1/Untitled.png)
     
 - 동작 코드
     
@@ -308,7 +310,7 @@ for i in range(1, v+1):
 - 사이클이 없는 방향그래프(DAG)의 모든 노드를 **방향성에 거스르지 않도록 순서대로 나열**하는 것을 의미한다.
 - 예시 : 선수 과목을 고려한 학습 순서 설정
 
-![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0ee7b294-a9cf-406d-abfe-8edf8e6d85d8/Alt text.png)
+![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0ee7b294-a9cf-406d-abfe-8edf8e6d85d8/Untitled.png)
 
 - 위 세 과목을 모두 듣기 위한 적절한 학습 순서는?
     - **자료구조 → 알고리즘 → 고급 알고리즘 (O)**
@@ -319,7 +321,7 @@ for i in range(1, v+1):
 - 진입 차수(Indegree) : 특정한 노드로 들어오는 간선의 개수
 - 진출 차수(Outdegree) : 특정한 노드에서 나가는 간선의 개수
 
-![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/59e7ddba-ad11-4620-a10f-3af69da0ea8b/Alt text.png)
+![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/59e7ddba-ad11-4620-a10f-3af69da0ea8b/Untitled.png)
 
 ## 위상 정렬 알고리즘
 
@@ -337,12 +339,12 @@ for i in range(1, v+1):
 - ****************************[초기 단계]**************************** 초기 단계에서는 **진입 차수가 0인 모든 노드**를 큐에 넣는다.
     - 처음에 **노드 1**이 큐에 삽입된다.
     
-    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8ff5a134-1a48-44e6-a248-f825e69be891/Alt text.png)
+    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8ff5a134-1a48-44e6-a248-f825e69be891/Untitled.png)
     
 - [****************Step 1]**************** 큐에서 **노드 1**을 꺼낸 뒤에 **노드 1**에서 나가는 간선을 제거한다.
     - 새롭게 **진입차수가 0이 된 노**드들을 큐에 삽입한다.
     
-    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4b39e6d1-7ce1-483a-81ba-49b3a5a283b5/Alt text.png)
+    ![Alt text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4b39e6d1-7ce1-483a-81ba-49b3a5a283b5/Untitled.png)
     
 - 큐에서 꺼낸 노드에서 나가는 간선을 제거하고 새롭게 진입 차수가 0이 돈 노드를 큐에 삽입 하는 과정을 반복한다.
 - **위상 정렬 결과 :**
